@@ -8,7 +8,7 @@ const TransactionList = ({ transactions, onEdit, onDelete }) => {
         {transactions.map((transaction, index) => (
           <li key={index} className='p-2 border rounded-md'>
             <span className={transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}>
-              {transaction.type === 'income' ? 'Income' : 'Expense'}: ${transaction.amount.toFixed(2)}
+              {transaction.type === 'income' ? 'Income' : 'Expense'}: ₹{transaction.amount.toFixed(2)}
             </span>
             <span className='ml-2 text-gray-500'>({transaction.date})</span>
             <div className='mt-1'>
