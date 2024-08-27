@@ -18,13 +18,13 @@ const TransactionList = ({ transactions, onEdit, onDelete }) => {
             <div className="flex space-x-2 mt-2">
               <button 
                 onClick={() => onEdit(index)} 
-                className="text-blue-500 hover:underline"
+                className="bg-blue-500 px-2 py-1 text-white rounded"
               >
                 Edit
               </button>
               <button 
                 onClick={() => onDelete(index)} 
-                className="text-red-500 hover:underline"
+                className="bg-red-500 text-white px-2 py-1 rounded"
               >
                 Delete
               </button>

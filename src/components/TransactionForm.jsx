@@ -18,9 +18,11 @@ const TransactionForm = () => {
     setTransactions(savedTransactions);
   }, []);
 
+//   to submit the transaction
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Create a new transaction object
     const newTransaction = { 
       type, 
       amount: parseFloat(amount), 
@@ -29,6 +31,7 @@ const TransactionForm = () => {
       description,
     };
 
+    // Update the transactions array with the new transaction
     let updatedTransactions;
     if (isEditing) {
       updatedTransactions = transactions.map((transaction, index) =>
@@ -40,6 +43,7 @@ const TransactionForm = () => {
       updatedTransactions = [...transactions, newTransaction];
     }
 
+    // Update the state and local storage
     setTransactions(updatedTransactions);
     localStorage.setItem('transactions', JSON.stringify(updatedTransactions));
     
@@ -50,6 +54,7 @@ const TransactionForm = () => {
     setDescription("");
   };
 
+//   to edit a transaction
   const handleEdit = (index) => {
     const transaction = transactions[index];
     setAmount(transaction.amount);
@@ -61,6 +66,7 @@ const TransactionForm = () => {
     setCurrentTransactionIndex(index);
   };
 
+//   to delete a transaction
   const handleDelete = (index) => {
     const updatedTransactions = transactions.filter((_, i) => i !== index);
     setTransactions(updatedTransactions);
@@ -69,54 +75,57 @@ const TransactionForm = () => {
 
   return (
     <div className="border p-3 rounded-md">
+      {/* transaction form to enter the amount */}
       <form onSubmit={handleSubmit} className="space-y-2 p-2 border rounded-md">
-        <div className="flex flex-col">
-          <label htmlFor="type">Transaction Type</label>
+        <div className="flex md:flex-row flex-col gap-2 items-center">
+        <div className="flex flex-col w-full">
+          <label htmlFor="type" className="font-semibold">Transaction Type</label>
           <select 
             id="type" 
             value={type} 
             onChange={(e) => setType(e.target.value)} 
-            className="md:w-1/4 p-1 border rounded-md outline-none"
+            className="p-1 border rounded-md outline-none"
           >
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>
         </div>
-        <div className="flex flex-col mt-2">
-          <label htmlFor="amount">Enter Amount</label>
+        <div className="flex flex-col w-full">
+          <label htmlFor="amount" className="font-semibold">Enter Amount</label>
           <input
             type="number"
             id="amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="md:w-1/4 p-1 border rounded-md outline-none"
+            className="p-1 border rounded-md outline-none"
             required
           />
         </div>
-        <div className="flex flex-col mt-2">
-          <label htmlFor="category">Category</label>
+        <div className="flex flex-col w-full">
+          <label htmlFor="category" className="font-semibold">Category</label>
           <input
             type="text"
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="md:w-1/4 p-1 border rounded-md outline-none"
+            className="p-1 border rounded-md outline-none"
             placeholder="e.g., Food, Rent"
             required
           />
         </div>
-        <div className="flex flex-col mt-2">
-          <label htmlFor="date">Date</label>
+        <div className="flex flex-col w-full">
+          <label htmlFor="date" className="font-semibold">Date</label>
           <input
             type="date"
             id="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="md:w-1/4 p-1 border rounded-md outline-none"
+            className="p-1 border rounded-md outline-none"
           />
         </div>
-        <div className="flex flex-col mt-2">
-          <label htmlFor="description">Description</label>
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="description" className="font-semibold">Description</label>
           <textarea
             id="description"
             value={description}
@@ -126,7 +135,7 @@ const TransactionForm = () => {
             rows="3"
           ></textarea>
         </div>
-        <button type="submit" className="px-3 py-2 bg-black rounded text-white mt-2">
+        <button type="submit" className="px-3 py-2 bg-black rounded text-white">
           {isEditing ? 'Update Transaction' : 'Enter'}
         </button>
       </form>

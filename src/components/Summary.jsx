@@ -5,6 +5,7 @@ const Summary = ({ transactions }) => {
   const [totalExpense, setTotalExpense] = useState(0);
   const [balance, setBalance] = useState(0);
 
+//   to maintain the total income, total expense, and balance
   useEffect(() => {
     const income = transactions
       .filter(transaction => transaction.type === 'income')
