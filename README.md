@@ -14,7 +14,7 @@ A simple and intuitive expense tracker application built with ReactJS and Tailwi
 
 ## Demo
 
-Check out the live demo: [Expense Tracker Demo](https://your-expense-tracker-demo-url.com)
+Check out the live demo: [PennWise](https://pennwise.vercel.app/)
 
 ## Features
 
@@ -85,7 +85,8 @@ To get a local copy up and running, follow these simple steps:
 │   │   ├── Summary.jsx
 │   │   └── ...
 │   ├── App.jsx
-│   ├── index.jsx
+│   ├── index.css
+│   ├── main.jsx
 │   └── ...
 ├── tailwind.config.js
 ├── package.json
